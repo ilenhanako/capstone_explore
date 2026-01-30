@@ -1,6 +1,21 @@
 """
-1) This training pipeline is for raw merged dataset (SVRDD + RDD2024). Transfer learning is
-a separate script.( to add in new features such as curbside defects add to taxonomy and active classes)
+1) This training pipeline is for raw merged dataset (SVRDD + RDD2024). This online dataset
+has defects 0 to 6 in common. I had to remove some classes as theres very few samples for them or they
+are not relevant. Hence, i had to preprocess by mapping the original labels to consolidate.
+When adding new datasets in future, please ensure that the classes are mapped carefully!! (which can be done through the verify dataset structure function)
+eg i would imagine
+    0: "road_crack_longitudinal",
+    1: "road_crack_transverse",
+    2: "road_crack_alligator",
+    3: "pothole",
+    4: "marking_faded",
+    5: "distractor_manhole",
+    6: "distractor_patch",
+    7: "new_defect_1",
+    8: "new_defect_2",
+    ...
+
+
 2) Gist of the training pipeline:
 - Verify dataset structure
 - Analyze class distribution (from raw merged dataset)
