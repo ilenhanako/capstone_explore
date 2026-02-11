@@ -1,16 +1,4 @@
-#!/usr/bin/env python3
-"""
-Two-phase transfer learning / fine-tuning script for YOLOv11 using Ultralytics API.
 
-Updates:
-- TRANSFER_HPARAMS adjusted for bbox-only datasets: copy_paste disabled and small rotation ('degrees') added.
-- Phase 2 LR reduction: Phase 2 lr0 is reduced by 10x before fine-tuning to protect pretrained backbone weights.
-
-Notes:
-- copy_paste in TRANSFER_HPARAMS is set to 0.0 because copy-paste augmentation generally requires instance masks/polygons.
-  If you *do* have segmentation masks and want to enable copy_paste, set this to a positive value and ensure your train() accepts it.
-- The script still uses best-effort application of TRANSFER_HPARAMS to model.model.hyp and best-effort config of loss.
-"""
 import argparse
 import os
 import glob
@@ -29,7 +17,7 @@ import torch.nn as nn
 TRANSFER_HPARAMS = {
     # loss gains (keep same as OPTIMIZED_HPARAMS in your workflow)
     'box': 7.5,
-    'cls': 0.5,
+    'cls': 1.5,
     'dfl': 1.5,
 
     # TRANSFER LEARNING SPECIFIC:

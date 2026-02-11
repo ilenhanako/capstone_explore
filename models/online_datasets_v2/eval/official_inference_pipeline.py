@@ -22,24 +22,36 @@ import torch
 logging.basicConfig(level=logging.INFO, format='[%(levelname)s] %(message)s')
 logger = logging.getLogger("road_defect_pipeline")
 
-CLASS_NAMES = {
+CLASSES = {
     0: "road_crack_longitudinal",
     1: "road_crack_transverse",
     2: "road_crack_alligator",
-    3: "pothole",
-    4: "marking_faded",
-    5: "distractor_manhole",
-    6: "distractor_patch"
+    3: "road_pothole",
+    4: "road_faded_marking",
+    5: "distractor_road_manhole",
+    6: "distractor_road_patch",
+    7: "distractor_reflection", 
+    8: "curb_crack",
+    9: "curb_edge_deterioration",
+    10: "curb_missing_sections", 
+    11: "curb_displacement",   
+    12: "curb_faded_marking"       
 }
 
 COLORS = {
-    0: (0, 255, 0),
-    1: (255, 0, 0),
-    2: (0, 0, 139),
-    3: (0, 0, 255),
-    4: (255, 255, 0),
-    5: (128, 0, 128),
-    6: (255, 128, 0),
+    0: (0, 255, 0),      # Green
+    1: (255, 0, 0),      # Blue
+    2: (0, 0, 139),      # Dark red
+    3: (0, 0, 255),      # Red
+    4: (255, 255, 0),    # Cyan
+    5: (128, 0, 128),    # Purple
+    6: (255, 128, 0),    # Orange
+    7: (200, 200, 200),  # Light gray - ADD THIS
+    8: (0, 255, 255),    # Yellow - ADD THIS
+    9: (255, 0, 255),    # Magenta - ADD THIS
+    10: (128, 255, 0),   # Lime - ADD THIS
+    11: (0, 128, 255),   # Sky blue - ADD THIS
+    12: (255, 255, 128)  # Light yellow - ADD THIS
 }
 
 ###FALLBACK TRACK JIC
